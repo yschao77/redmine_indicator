@@ -1,7 +1,7 @@
 <%=
 
   query = IssueQuery.new(:name => l("label_tracker_plural"), :user => User.current)
-  query.add_filter "project_id", "=", [project.id]
+  query.project = project
   query.add_filter "status_id", "*"
   query.column_names = ["tracker", "project", "status", "priority", "subject"]
   query.sort_criteria = [["tracker", "due_date", "desc"]]

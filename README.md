@@ -1,5 +1,9 @@
 # Redmine Indicator
 
+## 231130_Emily
+Support project page stat including subprojects issues
+- Modify app/view/projects files by [method](https://github.com/fraoustin/redmine_indicator/issues/14#issuecomment-775848460)
+
 ## Summary
 
 Add block with main indicator on my page and project page

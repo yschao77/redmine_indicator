@@ -1,6 +1,6 @@
 <%=
   queryopened = IssueQuery.new(:name => l("label_open_issues")+'/'+l("label_closed_issues"), :user => User.current)
-  queryopened.add_filter "project_id", "=", [project.id] 
+  queryopened.project = project
   queryopened.add_filter "status_id", "*"
   queryopened.add_filter "created_on", ">=" , [(Date.today-10).strftime("%Y-%m-%d")]
   queryopened.column_names = ["project", "tracker", "status", "subject"]
@@ -8,7 +8,7 @@
   issuesopened = queryopened.issues()
 
   queryclosed = IssueQuery.new(:name => l("issues_closed"), :user => User.current)
-  queryclosed.add_filter "project_id", "=", [project.id]
+  queryclosed.project = project
   queryclosed.add_filter "status_id", "c"
   queryclosed.add_filter "closed_on", ">=" , [(Date.today-10).strftime("%Y-%m-%d")]
   queryclosed.column_names = ["project", "tracker", "status", "subject"]

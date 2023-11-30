@@ -1,6 +1,6 @@
 <%=
   query = IssueQuery.new(:name => l("enumeration_issue_priorities"), :user => User.current)
-  query.add_filter "project_id", "=", [project.id]
+  query.project = project
   query.add_filter "status_id", "*"
   query.column_names = ["priority", "project", "tracker", "status", "subject"]
   query.sort_criteria = [["priority", "due_date", "desc"]]

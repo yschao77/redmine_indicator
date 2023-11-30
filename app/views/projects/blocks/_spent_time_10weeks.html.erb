@@ -1,6 +1,6 @@
 <%=
   query = TimeEntryQuery.new(:name => l("label_spent_time"), :user => User.current)
-  query.add_filter "project_id", "=", [project.id]
+  query.project = project
   query.add_filter "spent_on", ">=" , [(Date.today-70).strftime("%Y-%m-%d")]
   query.column_names = ["spent_on", "hours"]
   issues = query.results_scope()
